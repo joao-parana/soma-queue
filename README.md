@@ -38,7 +38,7 @@ You can set the memory that you need :
 docker run --name='activemq' -it --rm \
 	-e 'ACTIVEMQ_MIN_MEMORY=512' \
 	-e 'ACTIVEMQ_MAX_MEMORY=2048'\
-	joao-parana/soma-queue 
+	parana/soma-queue 
 ```
 This sample lauch ActiveMQ in docker with 512 MB of memory, and then ActiveMQ can take 2048 MB of max memory
 
@@ -54,7 +54,7 @@ You can launch the image using the docker command line :
 - **For test purpose :**
 
 ```bash
-docker run --name='activemq' -it --rm joao-parana/soma-queue:latest
+docker run --name='activemq' -it --rm parana/soma-queue:latest
 ```
 The account admin is "admin" and password is "admin". All settings is the default ActiveMQ's settings.
 
@@ -73,7 +73,7 @@ docker run --name='activemq' -d \
 -e 'ACTIVEMQ_MIN_MEMORY=1024' -e  'ACTIVEMQ_MAX_MEMORY=4096' \
 -v /data/activemq:/data/activemq \
 -v /var/log/activemq:/var/log/activemq \
-joao-parana/soma-queue
+parana/soma-queue
 ```
 
 # Configuration

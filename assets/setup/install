@@ -10,8 +10,9 @@ DATA_DIR="/data"
 # Start install
 mkdir -p ${ACTIVEMQ_HOME}
 cd /usr/src
-# curl -LO http://mir2.ovh.net/ftp.apache.org/dist/activemq/${ACTIVEMQ_VERSION}/apache-activemq-${ACTIVEMQ_VERSION}-bin.tar.gz
+echo "===> downloading Active MQ ..."
 curl -LO http://ftp.unicamp.br/pub/apache/activemq/${ACTIVEMQ_VERSION}/apache-activemq-${ACTIVEMQ_VERSION}-bin.tar.gz
+echo "===> untar Active MQ ..."
 tar -xvzf apache-activemq-${ACTIVEMQ_VERSION}-bin.tar.gz
 mv apache-activemq-${ACTIVEMQ_VERSION}/* ${ACTIVEMQ_HOME}
 rm -rf /usr/src/*
@@ -19,14 +20,17 @@ rm -rf /usr/src/*
 cd /app
 mkdir -p /data/activemq
 mkdir -p /var/log/activemq
+echo "===> addind user and group for Active MQ ..."
 groupadd activemq
 useradd --system --home ${ACTIVEMQ_HOME} -g activemq activemq
 
+echo "===> chmod some Active MQ files ..."
 chown -R activemq:activemq ${ACTIVEMQ_HOME}
 chown -R activemq:activemq ${DATA_DIR}/activemq
 chown -R activemq:activemq ${LOG_DIR}/activemq
 
-# We setup logrotate for activemq
+# setup logrotate for activemq
+echo "===> setup logrotate for Active MQ ..."
 cat > /etc/logrotate.d/activemq <<EOF
 ${LOG_DIR}/activemq/*.log {
   su activemq activemq
@@ -41,6 +45,7 @@ ${LOG_DIR}/activemq/*.log {
 EOF
 
 # configure supervisord log rotation
+echo "===> configure supervisord log rotation ..."
 cat > /etc/logrotate.d/supervisord <<EOF
 ${LOG_DIR}/supervisor/*.log {
   daily
@@ -54,6 +59,7 @@ ${LOG_DIR}/supervisor/*.log {
 EOF
 
 # configure supervisord to start crond
+echo "===> configure supervisord to start crond ..."
 cat > /etc/supervisor/conf.d/cron.conf <<EOF
 [program:cron]
 priority=20
@@ -67,6 +73,7 @@ stderr_logfile=${LOG_DIR}/supervisor/%(program_name)s.log
 EOF
 
 # configure supervisord to start activeMQ
+echo "===> configure supervisord to start Active MQ ..."
 cat > /etc/supervisor/conf.d/activemq.conf <<EOF
 [program:activemq]
 priority=20

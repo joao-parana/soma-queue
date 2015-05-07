@@ -1,6 +1,7 @@
 # Apache ActiveMQ 5.11.1
 
-FROM webcenter/openjdk-jre:8
+FROM parana/jdk8-debian
+
 MAINTAINER João Antonio Ferreira <joao.parana@gmail.com>
 
 # Update distro and install some packages
