@@ -54,8 +54,7 @@ You can launch the image using the docker command line :
 - **For test purpose :**
 
 ```bash
-docker run --name='activemq' -it --rm \
-joao-parana/soma-queue:latest
+docker run --name='activemq' -it --rm joao-parana/soma-queue:latest
 ```
 The account admin is "admin" and password is "admin". All settings is the default ActiveMQ's settings.
 
