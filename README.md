@@ -1,3 +1,7 @@
+# soma-queue
+
+This **Dockerfile** is a [trusted build](https://registry.hub.docker.com/u/parana/soma-queue/) of [Docker Registry](https://registry.hub.docker.com/).
+
 # Table of Contents
 - [Introduction](#introduction)
     - [Version](#version)
