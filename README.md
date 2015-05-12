@@ -21,6 +21,8 @@ This **Dockerfile** is a [trusted build](https://registry.hub.docker.com/u/paran
 
 Dockerfile to build a ActiveMQ container image.
 
+ActiveMQ has no gui, so we will be fine with openjdk-6-jre-headless because is the "Minimal Java runtime - needed for executing non GUI Java programs".
+
 ## Version
 
 Current Version: **5.11.1**
@@ -122,6 +124,3 @@ For advance configuration, the best way is to read ActiveMQ documentation and cr
 Next, you can mount it when you run this image or you can create your own image (base on this image) and include your specifics config file.
 
 The home of ActiveMQ is in /opt/activemq, so if you want to override all the setting, you can launch docker with ` -v /your_path/conf:/opt/activemq/conf`
-
-
-
