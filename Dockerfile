@@ -1,6 +1,7 @@
 # Apache ActiveMQ 5.11.1
 
-FROM parana/jdk8-debian
+# FROM parana/jdk8-debian # TODO: Investigar o que ocorre com a JDK da Oracle e ActiveMQ
+FROM webcenter/openjdk-jre:8
 
 MAINTAINER João Antonio Ferreira <joao.parana@gmail.com>
 
