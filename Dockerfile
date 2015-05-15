@@ -39,6 +39,13 @@ VOLUME ["/data/activemq"]
 VOLUME ["/var/log/activemq"]
 VOLUME ["/opt/activemq/conf"]
 
+USER root
+
+RUN mkdir -p /data/mq-conf && \
+    chmod 777 /data/mq-conf && \
+    chown activemq:activemq /data/mq-conf && \
+    ls -la /data
+
 # WORKDIR /opt/activemq
 
 # ENTRYPOINT ["/app/init"]
